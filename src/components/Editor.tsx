@@ -11,9 +11,7 @@ interface EditorProps {
 function Editor({ onChange, initialContent }: EditorProps) {
   const editor: BlockNoteEditor = useCreateBlockNote({
     dictionary: locales.ja,
-    initialContent: initialContent
-      ? (JSON.parse(initialContent) as PartialBlock[])
-      : undefined,
+    initialContent: initialContent ? (JSON.parse(initialContent) as PartialBlock[]) : undefined,
   });
 
   return (

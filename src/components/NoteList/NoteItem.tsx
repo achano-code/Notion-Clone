@@ -31,31 +31,23 @@ export function NoteItem({
     <div className={cn('ml-auto flex items-center gap-x-2')}>
       <DropdownMenu>
         <DropdownMenuTrigger onClick={(e) => e.stopPropagation()}>
-          <div
-            className="h-full ml-auto rounded-sm hover:bg-neutral-300"
-            role="button"
-          >
-            <MoreHorizontal className="w-4 h-4 text-muted-foreground" />
+          <div className="ml-auto h-full rounded-sm hover:bg-neutral-300" role="button">
+            <MoreHorizontal className="h-4 w-4 text-muted-foreground" />
           </div>
         </DropdownMenuTrigger>
-        <DropdownMenuContent
-          className="w-60"
-          align="start"
-          side="right"
-          forceMount
-        >
+        <DropdownMenuContent className="w-60" align="start" side="right" forceMount>
           <DropdownMenuItem onClick={onDelete}>
-            <Trash className="w-4 h-4 mr-2" />
+            <Trash className="mr-2 h-4 w-4" />
             Delete
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
       <div
-        className="h-full ml-auto rounded-sm hover:bg-neutral-300"
+        className="ml-auto h-full rounded-sm hover:bg-neutral-300"
         role="button"
         onClick={onCreate}
       >
-        <Plus className="w-4 h-4 text-muted-foreground" />
+        <Plus className="h-4 w-4 text-muted-foreground" />
       </div>
     </div>
   );
@@ -66,12 +58,7 @@ export function NoteItem({
       role="button"
       style={{ paddingLeft: layer != null ? `${layer * 12 + 12}px` : '12px' }}
     >
-      <Item
-        label={'test'}
-        icon={FileIcon}
-        onIconClick={onExpand}
-        trailingItem={menu}
-      />
+      <Item label={'test'} icon={FileIcon} onIconClick={onExpand} trailingItem={menu} />
     </div>
   );
 }

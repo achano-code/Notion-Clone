@@ -8,11 +8,8 @@ interface TitleInputProps {
 
 export function TitleInput({ initialData, onTitleChange }: TitleInputProps) {
   return (
-    <div className="pl-[54px] group relative">
-      <TextAreaAutoSize
-        className="text-5xl bg-transparent font-bold break-words outline-none text-[#3F3F3F 
-        resize-none"
-      />
+    <div className="group relative pl-[54px]">
+      <TextAreaAutoSize className="text-[#3F3F3F resize-none break-words bg-transparent text-5xl font-bold outline-none" />
     </div>
   );
 }

@@ -21,8 +21,8 @@ export function Item({
   return (
     <div
       className={cn(
-        'group min-h-[27px] text-sm py-1 pr-3 w-full flex items-center text-muted-foreground font-medium',
-        isActive && 'bg-neutral-200'
+        'group flex min-h-[27px] w-full items-center py-1 pr-3 text-sm font-medium text-muted-foreground',
+        isActive && 'bg-neutral-200',
       )}
       onClick={onClick}
       role="button"
@@ -30,7 +30,7 @@ export function Item({
     >
       <Icon
         onClick={onIconClick}
-        className="shrink-0 w-[18px] h-[18px] mr-2 text-muted-foreground"
+        className="mr-2 h-[18px] w-[18px] shrink-0 text-muted-foreground"
       />
       <span className="truncate">{label}</span>
       {trailingItem}

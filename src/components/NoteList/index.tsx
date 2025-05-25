@@ -13,7 +13,7 @@ export function NoteList({ layer = 0, parentId }: NoteListProps) {
       <p
         className={cn(
           `hidden text-sm font-medium text-muted-foreground/80`,
-          layer === 0 && 'hidden'
+          layer === 0 && 'hidden',
         )}
         style={{ paddingLeft: layer ? `${layer * 12 + 25}px` : undefined }}
       >

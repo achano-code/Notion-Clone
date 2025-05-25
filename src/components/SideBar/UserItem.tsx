@@ -19,39 +19,26 @@ const UserItem: FC<Props> = ({ user, signout }) => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <div
-          className="flex items-center text-sm p-3 w-full hover:bg-primary/5"
-          role="button"
-        >
-          <div className="gap-x-2 flex items-center max-w-[150px]">
-            <span className="text-start font-medium line-clamp-1">
+        <div className="flex w-full items-center p-3 text-sm hover:bg-primary/5" role="button">
+          <div className="flex max-w-[150px] items-center gap-x-2">
+            <span className="line-clamp-1 text-start font-medium">
               {user.user_metadata.name} さんのノート
             </span>
           </div>
-          <ChevronsLeftRight className="rotate-90 ml-2 text-muted-foreground w-4 h-4" />
+          <ChevronsLeftRight className="ml-2 h-4 w-4 rotate-90 text-muted-foreground" />
         </div>
       </DropdownMenuTrigger>
-      <DropdownMenuContent
-        className="w-80"
-        align="start"
-        alignOffset={11}
-        forceMount
-      >
+      <DropdownMenuContent className="w-80" align="start" alignOffset={11} forceMount>
         <div className="flex flex-col space-y-4 p-2">
-          <p className="text-xs font-medium leading-none text-muted-foreground">
-            {user.email}
-          </p>
-          <div className="flex gap-x-2 items-center">
+          <p className="text-xs font-medium leading-none text-muted-foreground">{user.email}</p>
+          <div className="flex items-center gap-x-2">
             <div className="space-y-1">
-              <p className="text-sm line-clamp-1">{user.user_metadata.name}</p>
+              <p className="line-clamp-1 text-sm">{user.user_metadata.name}</p>
             </div>
           </div>
         </div>
         <DropdownMenuSeparator />
-        <DropdownMenuItem
-          className="w-full cursor-pointer text-muted-foreground"
-          asChild
-        >
+        <DropdownMenuItem className="w-full cursor-pointer text-muted-foreground" asChild>
           <Item label="ログアウト" icon={LogOut} onClick={signout} />
         </DropdownMenuItem>
       </DropdownMenuContent>

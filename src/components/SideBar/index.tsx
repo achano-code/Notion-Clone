@@ -11,7 +11,7 @@ type Props = {
 const SideBar: FC<Props> = ({ onSearchButtonClicked }) => {
   return (
     <>
-      <aside className="group/sidebar h-full bg-neutral-100 overflow-y-auto relative flex flex-col w-60">
+      <aside className="group/sidebar relative flex h-full w-60 flex-col overflow-y-auto bg-neutral-100">
         <div>
           <div>
             <UserItem
@@ -33,7 +33,7 @@ const SideBar: FC<Props> = ({ onSearchButtonClicked }) => {
           </div>
         </div>
       </aside>
-      <div className="absolute top-0 z-[99999] left-60 w-[calc(100%-240px)]"></div>
+      <div className="absolute left-60 top-0 z-[99999] w-[calc(100%-240px)]"></div>
     </>
   );
 };

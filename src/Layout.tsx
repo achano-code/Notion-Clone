@@ -4,16 +4,16 @@ import { SearchModal } from './components/SearchModal';
 
 const Layout = () => {
   return (
-    <div className="h-full flex">
-      <SideBar onSearchButtonClicked={() => { }} />
-      <main className="flex-1 h-full overflow-y-auto">
+    <div className="flex h-full">
+      <SideBar onSearchButtonClicked={() => {}} />
+      <main className="h-full flex-1 overflow-y-auto">
         <Outlet />
         <SearchModal
           isOpen={false}
           notes={[]}
-          onItemSelect={() => { }}
-          onKeywordChanged={() => { }}
-          onClose={() => { }}
+          onItemSelect={() => {}}
+          onKeywordChanged={() => {}}
+          onClose={() => {}}
         />
       </main>
     </div>
