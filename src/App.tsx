@@ -5,8 +5,26 @@ import { Home } from './pages/Home';
 import NoteDetail from './pages/NoteDetail';
 import Signin from './pages/Signin';
 import Signup from './pages/Signup';
+import { useCurrentUserStore } from './modules/current-user.state';
+import { useEffect, useState } from 'react';
+import { authRepository } from './modules/auth.repository';
 
 export const App = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  const currentUserStore = useCurrentUserStore();
+
+  const setSession = async () => {
+    const currentUser = await authRepository.getCurrentUser();
+    currentUserStore.set(currentUser?.user);
+    setIsLoading(false);
+  }
+
+  useEffect(() => {
+    setSession();
+  }, [])
+
+  if (isLoading) return <div />;
+
   return (
     <BrowserRouter>
       <div className="h-screen">

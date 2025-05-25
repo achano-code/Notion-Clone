@@ -1,15 +1,20 @@
 import { authRepository } from '@/modules/auth.repository';
+import { useCurrentUserStore } from '@/modules/current-user.state';
 import { useState } from 'react';
+import { Navigate } from 'react-router-dom';
 
 function Signup() {
   const [username, setUserName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+  const currentUserStore = useCurrentUserStore();
 
-  const signUp = () => {
-    const user = authRepository.signup(username, email, password);
-    console.log(user)
+  const signUp = async () => {
+    const user = await authRepository.signup(username, email, password);
+    currentUserStore.set(user);
   };
+
+  if (currentUserStore.currentUser != null) return <Navigate replace to="/" />;
 
   return (
     <div className="min-h-screen bg-gray-100 px-4 py-10 sm:px-6 lg:px-8">
@@ -68,7 +73,7 @@ function Signup() {
               </div>
               <div>
                 <button
-                  disabled={username == "" || email == "" || password == ""}
+                  disabled={username == '' || email == '' || password == ''}
                   onClick={signUp}
                   className="flex w-full justify-center rounded-md border border-transparent bg-slate-900 px-4 py-2 text-sm font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                 >
