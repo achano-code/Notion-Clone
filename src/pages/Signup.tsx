@@ -1,5 +1,5 @@
-import { authRepository } from '@/modules/auth.repository';
-import { useCurrentUserStore } from '@/modules/current-user.state';
+import { authRepository } from '@/modules/auth/auth.repository';
+import { useCurrentUserStore } from '@/modules/auth/current-user.state';
 import { useState } from 'react';
 import { Navigate } from 'react-router-dom';
 
