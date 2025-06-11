@@ -15,6 +15,7 @@ export function Home() {
     setTitle("");
     noteStore.set([newNote])
     console.log(newNote);
+    console.log(currentUser)
   }
 
   return (
