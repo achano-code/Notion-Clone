@@ -44,4 +44,14 @@ export const noteRepository = {
     const { data } = await supabase.from('notes').update(note).eq('id', id).select().single();
     return data;
   },
+
+  async findByLeyword(userId: string, keyword: string) {
+    const { data } = await supabase
+      .from('notes')
+      .select()
+      .eq('user_id', userId)
+      .or(`title.ilike.%${keyword}%,content.ilike.%${keyword}}%`)
+      .order('created_at', { ascending: false });
+    return data;
+  },
 };
