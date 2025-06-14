@@ -6,6 +6,7 @@ import { Plus, Search } from 'lucide-react';
 import { useCurrentUserStore } from '@/modules/auth/current-user.state';
 import { useNoteStore } from '@/modules/notes/note.state';
 import { noteRepository } from '@/modules/notes/notes.repository';
+import { useNavigate } from 'react-router-dom';
 
 type Props = {
   onSearchButtonClicked: () => void;
@@ -14,10 +15,11 @@ type Props = {
 const SideBar: FC<Props> = ({ onSearchButtonClicked }) => {
   const { currentUser } = useCurrentUserStore();
   const noteStore = useNoteStore();
-
+  const navigate = useNavigate();
   const createNote = async () => {
     const newNote = await noteRepository.create(currentUser!.id, {});
     noteStore.set([newNote])
+    navigate(`/notes/${newNote.id}`)
   }
 
   return (
