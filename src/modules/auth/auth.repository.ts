@@ -28,6 +28,12 @@ export const authRepository = {
     };
   },
 
+  async signout() {
+    const { error } = await supabase.auth.signOut();
+    if (error != null) throw new Error(error.message);
+    return true;
+  },
+
   async getCurrentUser() {
     const { data, error } = await supabase.auth.getSession();
     if (error != null || data.session == null) return;

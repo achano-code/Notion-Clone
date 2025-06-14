@@ -5,7 +5,7 @@ import { useCurrentUserStore } from '@/modules/auth/current-user.state';
 import { noteRepository } from '@/modules/notes/notes.repository';
 import { Note } from '@/modules/notes/note.entity';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 interface NoteListProps {
   layer?: number;
@@ -18,6 +18,8 @@ export function NoteList({ layer = 0, parentId }: NoteListProps) {
   const { currentUser } = useCurrentUserStore();
   const [expanded, setExpanded] = useState<Map<number, boolean>>(new Map());
   const navigate = useNavigate();
+  const params = useParams();
+  const id = params.id != null ? parseInt(params.id) : undefined;
 
   const createChild = async (e: React.MouseEvent, parentId: number) => {
     e.stopPropagation();
@@ -69,6 +71,7 @@ export function NoteList({ layer = 0, parentId }: NoteListProps) {
               <NoteItem
                 note={note}
                 layer={layer}
+                isSelected={id == note.id}
                 expanded={expanded.get(note.id)}
                 onCreate={(e) => createChild(e, note.id)}
                 onClick={() => moveToDetail(note.id)}

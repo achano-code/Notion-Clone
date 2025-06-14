@@ -69,7 +69,7 @@ export function NoteItem({
       role="button"
       style={{ paddingLeft: layer != null ? `${layer * 12 + 12}px` : '12px' }}
     >
-      <Item label={note.title || "無題"} icon={getIcon()} onIconClick={onExpand} trailingItem={menu} isActive={isHoverd} />
+      <Item label={note.title || "無題"} icon={getIcon()} onIconClick={onExpand} trailingItem={menu} isActive={isHoverd || isSelected} />
     </div>
   );
 }

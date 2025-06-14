@@ -29,11 +29,13 @@ export const useNoteStore = () => {
     setNotes((oldNotes) => oldNotes.filter((note) => ![...childrenIds, id].includes(note.id)));
   };
   const getOne = (id: number) => notes.find((note) => note.id == id);
+  const clear = () => setNotes([]);
 
   return {
     getAll: () => notes,
     getOne,
     set,
     delete: deleteNote,
+    clear,
   };
 };
