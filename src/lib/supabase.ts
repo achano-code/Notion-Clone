@@ -4,9 +4,9 @@ import {
   RealtimeChannel,
   RealtimePostgresChangesPayload,
 } from '@supabase/supabase-js';
-import { table } from 'console';
+// import { table } from 'console';
 import { Database } from 'database.types';
-import { channel } from 'diagnostics_channel';
+// import { channel } from 'diagnostics_channel';
 
 export const supabase = createClient<Database>(
   import.meta.env.VITE_SUPABASE_URL,

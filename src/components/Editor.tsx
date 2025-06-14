@@ -1,4 +1,4 @@
-import { BlockNoteEditor, PartialBlock, locales } from '@blocknote/core';
+import { BlockNoteEditor, locales } from '@blocknote/core';
 // import { ja } from "@blocknote/core/locales";
 import { useCreateBlockNote } from '@blocknote/react';
 import '@blocknote/mantine/style.css';
