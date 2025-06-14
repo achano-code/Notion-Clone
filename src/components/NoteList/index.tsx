@@ -43,6 +43,13 @@ export function NoteList({ layer = 0, parentId }: NoteListProps) {
     navigate(`/notes/${noteId}`)
   }
 
+  const deleteNote = async (e: React.MouseEvent, noteId: number) => {
+    e.stopPropagation();
+    await noteRepository.delete(noteId);
+    noteStore.delete(noteId);
+    navigate("/")
+  }
+
   return (
     <>
       <p
@@ -59,7 +66,14 @@ export function NoteList({ layer = 0, parentId }: NoteListProps) {
         .map((note) => {
           return (
             <div key={note.id}>
-              <NoteItem note={note} layer={layer} expanded={expanded.get(note.id)} onCreate={(e) => createChild(e, note.id)} onClick={() => moveToDetail(note.id)} onExpand={(e: React.MouseEvent) => featchChildren(e, note)} />
+              <NoteItem
+                note={note}
+                layer={layer}
+                expanded={expanded.get(note.id)}
+                onCreate={(e) => createChild(e, note.id)}
+                onClick={() => moveToDetail(note.id)}
+                onExpand={(e: React.MouseEvent) => featchChildren(e, note)}
+                onDelete={(e) => deleteNote(e, note.id)} />
               {expanded.get(note.id) && (
                 <NoteList layer={layer + 1} parentId={note.id} />
               )}
